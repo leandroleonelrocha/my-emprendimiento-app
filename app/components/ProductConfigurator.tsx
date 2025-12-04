@@ -23,60 +23,72 @@ export default function ProductConfigurator({ producto }: Props) {
   }, [config, producto]);
 
   return (
-    <div style={{ padding: 20, maxWidth: 400 }}>
-      <h2>{producto.nombre}</h2>
+    <div className="p-6 max-w-md mx-auto bg-white shadow-lg rounded-3xl border border-gray-100">
+    <h2 className="text-2xl font-bold text-gray-800 mb-5 text-center">
+        {producto.nombre}
+    </h2>
 
-      {/* MEDIDAS */}
-      <label>Medida</label>
-      <select
-        className="form-select mb-3"
+    {/* MEDIDAS */}
+    <div className="mb-4">
+        <label className="block font-medium mb-1 text-gray-700">Medida</label>
+        <select
+        className="form-select rounded-2 p-2 border border-gray-300"
         value={config.medida}
-        onChange={(e) =>
-          setConfig({ ...config, medida: e.target.value })
-        }
-      >
+        onChange={(e) => setConfig({ ...config, medida: e.target.value })}
+        >
         {producto.medidas.map((m) => (
-          <option key={m.id} value={m.id}>
+            <option key={m.id} value={m.id}>
             {m.etiqueta} (+${m.extra})
-          </option>
+            </option>
         ))}
-      </select>
+        </select>
+    </div>
 
-      {/* MADERA */}
-      <label>Madera</label>
-      <select
-        className="form-select mb-3"
+    {/* MADERA */}
+    <div className="mb-4">
+        <label className="block font-medium mb-1 text-gray-700">Madera</label>
+        <select
+        className="form-select rounded-2 p-2 border border-gray-300"
         value={config.madera}
-        onChange={(e) =>
-          setConfig({ ...config, madera: e.target.value })
-        }
-      >
+        onChange={(e) => setConfig({ ...config, madera: e.target.value })}
+        >
         {producto.maderas.map((m) => (
-          <option key={m.id} value={m.id}>
+            <option key={m.id} value={m.id}>
             {m.etiqueta} (+${m.extra})
-          </option>
+            </option>
         ))}
-      </select>
+        </select>
+    </div>
 
-      {/* GANCHOS */}
-      <label>Ganchos</label>
-      <select
-        className="form-select mb-3"
+    {/* GANCHOS */}
+    <div className="mb-4">
+        <label className="block font-medium mb-1 text-gray-700">Ganchos</label>
+        <select
+        className="form-select rounded-2 p-2 border border-gray-300"
         value={config.ganchos}
         onChange={(e) =>
-          setConfig({ ...config, ganchos: Number(e.target.value) })
+            setConfig({ ...config, ganchos: Number(e.target.value) })
         }
-      >
+        >
         {producto.ganchos.map((g) => (
-          <option key={g.id} value={g.id}>
+            <option key={g.id} value={g.id}>
             {g.etiqueta} (+${g.extra})
-          </option>
+            </option>
         ))}
-      </select>
-
-      <hr />
-
-      <h3>Precio final: ${precio}</h3>
+        </select>
     </div>
+
+    <hr className="my-4" />
+
+    <div className="text-center">
+        <h3 className="text-xl font-semibold text-gray-900">
+        Precio final:
+        </h3>
+        <p className="text-3xl font-bold text-green-600 mt-1">
+        ${precio}
+        </p>
+    </div>
+    </div>
+
   );
 }
