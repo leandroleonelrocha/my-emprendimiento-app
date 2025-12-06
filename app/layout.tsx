@@ -45,7 +45,27 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <head>
         <title>Muebles de familia</title>
       </head>
+      
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <header className="w-full py-6 shadow-sm bg-white">
+          <div className="container mx-auto flex items-center justify-between px-4">
+
+            {/* Logo + Título */}
+            <div className="flex items-center gap-3">
+              <img src="/logo.jpeg" alt="MueblesLux Logo" className="h-10" />
+              <h1 className="text-2xl font-bold">Muebles De Familia</h1>
+            </div>
+
+            {/* Navegación */}
+            <nav className="space-x-6">
+              <a href="#productos" className="hover:underline">Productos</a>
+              <a href="#destacados" className="hover:underline">Destacados</a>
+              <a href="#contacto" className="hover:underline">Contacto</a>
+            </nav>
+
+          </div>
+        </header>
+
         {children}
       </body>
     </html>

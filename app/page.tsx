@@ -22,14 +22,20 @@ function Destacados() {
                 Combinamos comodidad y estilo para transformar tu espacio.
               </p>
 
-                         <a
+              <a href={`/producto/1`}>
+  <button className="bg-gray-900 text-white py-2 px-4 rounded-lg hover:bg-gray-700">
+    Saber más
+  </button>
+</a>
+
+                         {/* <a
                     href={whatsappLiving}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-green-600 text-white w-full py-2 rounded-lg hover:bg-green-700 transition flex items-center justify-center"
                   >
                     Consultar por WhatsApp
-                  </a>
+                  </a> */}
             </div>
           </div>
 
@@ -42,14 +48,21 @@ function Destacados() {
                 Diseñamos ambientes únicos adaptados a tu estilo.
               </p>
 
-               <a
+                                    
+              <a href={`/producto/2`}>
+              <button className="bg-gray-900 text-white py-2 px-4 rounded-lg hover:bg-gray-700">
+                Saber más
+              </button>
+            </a>
+
+              {/* <a
                     href={whatsappDormitorio}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-green-600 text-white w-full py-2 rounded-lg hover:bg-green-700 transition flex items-center justify-center"
                   >
                     Consultar por WhatsApp
-                  </a>
+                  </a> */}
             </div>
           </div>
 
@@ -63,24 +76,7 @@ export default function LandingMuebles() {
   return (
     <div className="min-h-screen bg-gray-50 text-gray-800">
       {/* Header */}
-      <header className="w-full py-6 shadow-sm bg-white">
-        <div className="container mx-auto flex items-center justify-between px-4">
-
-          {/* Logo + Título */}
-          <div className="flex items-center gap-3">
-            <img src="/logo.jpeg" alt="MueblesLux Logo" className="h-10" />
-            <h1 className="text-2xl font-bold">Muebles De Familia</h1>
-          </div>
-
-          {/* Navegación */}
-          <nav className="space-x-6">
-            <a href="#productos" className="hover:underline">Productos</a>
-            <a href="#destacados" className="hover:underline">Destacados</a>
-            <a href="#contacto" className="hover:underline">Contacto</a>
-          </nav>
-
-        </div>
-      </header>
+     
 
       {/* Hero */}
       <section className="w-full bg-[url('/img/tablero.jpg')] bg-cover bg-center py-32 text-white">
