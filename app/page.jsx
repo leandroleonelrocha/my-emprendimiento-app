@@ -1,3 +1,64 @@
+import { productos } from "@/app/data/productos";
+import { generarLinkWhatsApp } from "@/app/utils/whatsapp";
+
+
+function Destacados() {
+  const whatsappLiving = generarLinkWhatsApp("Living Moderno");
+  const whatsappDormitorio = generarLinkWhatsApp("Dormitorio Premium");
+
+  return (
+    <section id="destacados" className="bg-gray-100 py-16">
+      <div className="container mx-auto px-4">
+        <h3 className="text-3xl font-semibold mb-10 text-center">Destacados</h3>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          
+          {/* CARD 1 */}
+          <div className="rounded-2xl overflow-hidden shadow-lg">
+            <img src="/img/14.jpeg" className="w-full" />
+            <div className="p-6 bg-white">
+              <h4 className="text-xl font-semibold mb-2">Living Moderno</h4>
+              <p className="text-gray-600 mb-4">
+                Combinamos comodidad y estilo para transformar tu espacio.
+              </p>
+
+                         <a
+                    href={whatsappLiving}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-green-600 text-white w-full py-2 rounded-lg hover:bg-green-700 transition flex items-center justify-center"
+                  >
+                    Consultar por WhatsApp
+                  </a>
+            </div>
+          </div>
+
+          {/* CARD 2 */}
+          <div className="rounded-2xl overflow-hidden shadow-lg">
+            <img src="/img/9.jpeg" className="w-full" />
+            <div className="p-6 bg-white">
+              <h4 className="text-xl font-semibold mb-2">Dormitorio Premium</h4>
+              <p className="text-gray-600 mb-4">
+                Diseñamos ambientes únicos adaptados a tu estilo.
+              </p>
+
+               <a
+                    href={whatsappDormitorio}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-green-600 text-white w-full py-2 rounded-lg hover:bg-green-700 transition flex items-center justify-center"
+                  >
+                    Consultar por WhatsApp
+                  </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function LandingMuebles() {
   return (
     <div className="min-h-screen bg-gray-50 text-gray-800">
@@ -40,39 +101,34 @@ export default function LandingMuebles() {
 
       <section id="productos" className="container mx-auto px-4 py-16">
         <h3 className="text-3xl font-semibold mb-10 text-center">Nuestros productos</h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {[1, 2, 3, 4, 5, 6].map((n) => {
-            const productName = `Mueble ${n}`;
-            // Define el número de teléfono con código de país (sin + ni guiones).
-            const phoneNumber = '5491162174495'; // REEMPLAZA CON TU NÚMERO
-            //const phoneNumber = '5491163009079';
-            
-            // Define la URL de tu sitio web para el mensaje
-            const websiteURL = 'https://my-emprendimiento-app.vercel.app/'; // REEMPLAZA CON LA URL DE TU SITIO WEB
 
-            // Texto completo del mensaje, incluyendo la URL del sitio
-            const fullMessage = `Hola, estoy interesado en el producto: ${productName}. 
-            ¿Podrían darme más información? 
-            Consulta realizada desde: ${websiteURL}`;
-            
-            // Codifica el texto del mensaje (los saltos de línea se codifican automáticamente)
-            const whatsappMessage = encodeURIComponent(fullMessage);
-            
-            // Crea la URL completa de WhatsApp
-            const whatsappURL = `https://wa.me/${phoneNumber}?text=${whatsappMessage}`;
+        {/* GRID DINÁMICO */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {productos.map((item) => {
+                
+                
+            const whatsappURL = generarLinkWhatsApp(item.nombre);
+
 
             return (
-              <div key={n} className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition">
-                <img src={`/img/1.jpeg`} alt="Mueble" className="w-full h-56 object-cover" />
+              <div key={item.id} className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition">
+                <img
+                  src={item.imagen}
+                  alt={item.nombre}
+                  className="w-full h-56 object-cover"
+                />
+
                 <div className="p-4">
-                  <h4 className="font-semibold text-lg mb-2">{productName}</h4>
-                  <p className="text-sm text-gray-600 mb-3">Descripción breve del producto, estilo y acabado.</p>
-                  
-                  {/* El enlace de WhatsApp */}
-                  <a 
-                    href={whatsappURL} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
+                  <h4 className="font-semibold text-lg mb-2">{item.nombre}</h4>
+
+                  <p className="text-sm text-gray-600 mb-3">
+                    Precio base: ${item.basePrice.toLocaleString("es-AR")}
+                  </p>
+
+                  <a
+                    href={whatsappURL}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="bg-green-600 text-white w-full py-2 rounded-lg hover:bg-green-700 transition flex items-center justify-center"
                   >
                     Consultar por WhatsApp
@@ -84,32 +140,9 @@ export default function LandingMuebles() {
         </div>
       </section>
 
+
       {/* Destacados */}
-      <section id="destacados" className="bg-gray-100 py-16">
-        <div className="container mx-auto px-4">
-          <h3 className="text-3xl font-semibold mb-10 text-center">Destacados</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="rounded-2xl overflow-hidden shadow-lg">
-              <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc" className="w-full h-64 object-cover" />
-              <div className="p-6 bg-white">
-                <h4 className="text-xl font-semibold mb-2">Living Moderno</h4>
-                <p className="text-gray-600 mb-4">Combinamos comodidad y estilo para transformar tu espacio.</p>
-                <button className="bg-gray-900 text-white py-2 px-4 rounded-lg hover:bg-gray-700">Saber más</button>
-              </div>
-            </div>
-
-            <div className="rounded-2xl overflow-hidden shadow-lg">
-              <img src="https://images.unsplash.com/photo-1505691723518-36a75f6f3c49" className="w-full h-64 object-cover" />
-              <div className="p-6 bg-white">
-                <h4 className="text-xl font-semibold mb-2">Dormitorio Premium</h4>
-                <p className="text-gray-600 mb-4">Diseñamos ambientes únicos adaptados a tu estilo.</p>
-                <button className="bg-gray-900 text-white py-2 px-4 rounded-lg hover:bg-gray-700">Saber más</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      <Destacados />
       {/* Contacto */}
       <section id="contacto" className="container mx-auto px-4 py-16">
         <h3 className="text-3xl font-semibold mb-6 text-center">Contacto</h3>
