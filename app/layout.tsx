@@ -16,15 +16,15 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Muebles de familia",
   description: "Muebles personalizados en melamina.",
-  
+
   openGraph: {
     title: "Muebles de familia",
     description: "Muebles personalizados en melamina.",
-    url: "https://my-emprendimiento-app.vercel.app",
+    url: "https://muebles-de-familia.vercel.app/",
     siteName: "Muebles de familia",
     images: [
       {
-        url: "/sin-fondo.jpg", // poné tu propia imagen
+        url: "https://muebles-de-familia.vercel.app/sin-fondo.png", 
         width: 1200,
         height: 630,
       }
@@ -33,10 +33,11 @@ export const metadata: Metadata = {
   },
 
   icons: {
-    icon: '/favicon.ico',
-    apple: '/apple-icon.png',
+    icon: "/favicon.ico",
+    apple: "/apple-icon.png",
   }
 };
+
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
