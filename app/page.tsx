@@ -1,5 +1,6 @@
 import { productos } from "@/app/data/productos";
 import { generarLinkWhatsApp } from "@/app/utils/whatsapp";
+import ContactForm from "./components/ContactForm";
 
 
 function Destacados() {
@@ -23,10 +24,10 @@ function Destacados() {
               </p>
 
               <a href={`/producto/1`}>
-  <button className="bg-gray-900 text-white py-2 px-4 rounded-lg hover:bg-gray-700">
-    Saber más
-  </button>
-</a>
+                <button className="bg-gray-900 text-white py-2 px-4 rounded-lg hover:bg-gray-700">
+                  Saber más
+                </button>
+              </a>
 
                          {/* <a
                     href={whatsappLiving}
@@ -100,57 +101,42 @@ export default function LandingMuebles() {
 
         {/* GRID DINÁMICO */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {productos.map((item) => {
-                
-                
-            const whatsappURL = generarLinkWhatsApp(item.nombre);
+        {productos.map((item) => {
+          return (
+            <a
+              key={item.id}
+              href={`/producto/${item.id}`}
+              className="block bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition cursor-pointer"
+            >
+              <img
+                src={item.imagen}
+                alt={item.nombre}
+                className="w-full h-56 object-cover"
+              />
 
+              <div className="p-4">
+                <h4 className="font-semibold text-lg mb-2">{item.nombre}</h4>
 
-            return (
-              <div key={item.id} className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition">
-                <img
-                  src={item.imagen}
-                  alt={item.nombre}
-                  className="w-full h-56 object-cover"
-                />
+                <p className="text-sm text-gray-600 mb-3">
+                  Precio base: ${item.basePrice.toLocaleString("es-AR")}
+                </p>
 
-                <div className="p-4">
-                  <h4 className="font-semibold text-lg mb-2">{item.nombre}</h4>
-
-                  <p className="text-sm text-gray-600 mb-3">
-                    Precio base: ${item.basePrice.toLocaleString("es-AR")}
-                  </p>
-
-                  <a
-                    href={whatsappURL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-green-600 text-white w-full py-2 rounded-lg hover:bg-green-700 transition flex items-center justify-center"
-                  >
-                    Consultar por WhatsApp
-                  </a>
-                </div>
+                <button className="bg-gray-900 text-white py-2 px-4 rounded-lg hover:bg-gray-700">
+                  Saber más
+                </button>
               </div>
-            );
-          })}
-        </div>
+            </a>
+          );
+        })}
+      </div>
+
       </section>
 
 
       {/* Destacados */}
       <Destacados />
       {/* Contacto */}
-      <section id="contacto" className="container mx-auto px-4 py-16">
-        <h3 className="text-3xl font-semibold mb-6 text-center">Contacto</h3>
-        <div className="max-w-lg mx-auto bg-white shadow-lg rounded-2xl p-6">
-          <form className="space-y-4">
-            <input type="text" placeholder="Nombre" className="w-full border p-3 rounded-lg" />
-            <input type="email" placeholder="Email" className="w-full border p-3 rounded-lg" />
-            <textarea placeholder="Mensaje" className="w-full border p-3 rounded-lg h-32" />
-            <button className="w-full bg-gray-900 text-white py-3 rounded-lg hover:bg-gray-700">Enviar consulta</button>
-          </form>
-        </div>
-      </section>
+      <ContactForm />
 
       {/* Footer */}
       <footer className="text-center py-6 text-sm text-gray-600">
