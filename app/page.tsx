@@ -31,7 +31,7 @@ export default function LandingMuebles() {
 
 
       {/* PRODUCTOS */}
-      <section id="productos" className="container-fluid py-5">
+      <section id="productos" className="container py-5">
         <h3 className="fw-semibold text-center mb-5 display-6">Nuestros productos</h3>
 
         <div className="row g-4">

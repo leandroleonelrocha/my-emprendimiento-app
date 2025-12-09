@@ -16,7 +16,7 @@ Link del producto: ${url}`
 
   return (
     <section id="destacados" className="bg-light py-5">
-      <div className="container-fluid">
+      <div className="container">
 
         <h1 className="fw-bold fs-2 mb-4">{producto.nombre}</h1>
 
