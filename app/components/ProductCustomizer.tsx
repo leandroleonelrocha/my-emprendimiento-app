@@ -45,9 +45,10 @@ export default function ProductCustomizer({ producto, onColorChange }: any) {
 
       {Array.isArray(producto.descripcion) ? (
         <ul className="text-muted mb-3">
-          {producto.descripcion.map((desc, index) => (
-            <li key={index}>{desc}</li>
-          ))}
+          {producto.descripcion.map((desc: string, index: number) => (
+  <li key={index}>{desc}</li>
+))}
+
         </ul>
       ) : (
         <p className="text-muted mb-3">{producto.descripcion}</p>
