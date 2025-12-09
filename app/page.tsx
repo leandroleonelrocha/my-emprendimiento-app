@@ -52,15 +52,20 @@ export default function LandingMuebles() {
                   />
 
                   <div className="card-body">
-                    <h4 className="fw-bold mb-2">{item.nombre}</h4>
+
+                    <h5 className="fw-normal mt-3">
+                      ${item.basePrice.toLocaleString("es-AR")}
+                    </h5>
+
+                    <h4 className="fw-bold mt-3">{item.nombre}</h4>
 
                     {/* Precio */}
-                    <span className="badge bg-success bg-opacity-25 text-success fw-semibold mb-3 p-2">
+                    {/* <span className="badge bg-success bg-opacity-25 text-success fw-semibold mb-3 p-2">
                       ${item.basePrice.toLocaleString("es-AR")}
-                    </span>
+                    </span> */}
 
                     {/* Descripción */}
-                    {Array.isArray(item.descripcion) ? (
+                    {/* {Array.isArray(item.descripcion) ? (
                       <ul className="text-muted mb-3">
                         {item.descripcion.map((desc, index) => (
                           <li key={index}>{desc}</li>
@@ -68,9 +73,9 @@ export default function LandingMuebles() {
                       </ul>
                     ) : (
                       <p className="text-muted mb-3">{item.descripcion}</p>
-                    )}
+                    )} */}
 
-                    <button className="btn btn-dark w-100 rounded-3">
+                    <button className="btn btn-dark w-100 rounded-3 mt-3">
                       Saber más
                     </button>
                   </div>

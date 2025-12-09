@@ -45,6 +45,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="es">
       <head>
         <title>Muebles de familia</title>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+        />
+
       </head>
 
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
@@ -62,16 +67,16 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             {/* Navegación */}
             <nav className="d-flex gap-4">
               <a href="#productos" className="text-decoration-none">Productos</a>
-              <a href="#destacados" className="text-decoration-none">Destacados</a>
+              {/* <a href="#destacados" className="text-decoration-none">Destacados</a>
               <a href="#realizados" className="text-decoration-none">Trabajos realizados</a>
-              <a href="#contacto" className="text-decoration-none">Contacto</a>
+              <a href="#contacto" className="text-decoration-none">Contacto</a> */}
             </nav>
 
           </div>
         </header>
 
         {/* CONTENIDO */}
-        <main className="container-fluid py-4">
+        <main className="container-fluid">
           {children}
         </main>
 

@@ -39,10 +39,24 @@ export default function ProductCustomizer({ producto, onColorChange }: any) {
   return (
     <div className="mt-4">
 
-      {/* COLORES */}
-      <p className="fw-semibold mb-1">Color del Lateral:</p>
+      <p className="fs-4 fw-bold mt-4">
+        Descripción:
+      </p>
 
-      <div className="d-flex gap-3 mb-4">
+      {Array.isArray(producto.descripcion) ? (
+        <ul className="text-muted mb-3">
+          {producto.descripcion.map((desc, index) => (
+            <li key={index}>{desc}</li>
+          ))}
+        </ul>
+      ) : (
+        <p className="text-muted mb-3">{producto.descripcion}</p>
+      )}
+
+      {/* COLORES */}
+      {/* <p className="fw-semibold mb-1">Color del Lateral:</p> */}
+
+      {/* <div className="d-flex gap-3 mb-4">
         {producto.colores?.map((c: any) => (
           <div
             key={c.id}
@@ -57,10 +71,10 @@ export default function ProductCustomizer({ producto, onColorChange }: any) {
             }}
           ></div>
         ))}
-      </div>
+      </div> */}
 
       {/* TAMAÑO */}
-      <label className="fw-semibold mb-1">Tamaño:</label>
+      {/* <label className="fw-semibold mb-1">Tamaño:</label>
       <select
         className="form-select mb-4"
         onChange={(e) =>
@@ -73,10 +87,10 @@ export default function ProductCustomizer({ producto, onColorChange }: any) {
             {t.etiqueta} (+${t.extra})
           </option>
         ))}
-      </select>
+      </select> */}
 
       {/* SUBIR DISEÑO PERSONALIZADO */}
-      {producto.permiteImagenPersonalizada && (
+      {/* {producto.permiteImagenPersonalizada && (
         <>
           <label className="fw-semibold mb-2">Subir Diseño Personalizado:</label>
 
@@ -100,7 +114,7 @@ export default function ProductCustomizer({ producto, onColorChange }: any) {
             </div>
           )}
         </>
-      )}
+      )} */}
 
       {/* PRECIO */}
       <p className="fs-4 fw-bold mt-4">
