@@ -79,7 +79,7 @@ export default function ProductCustomizer({ producto, onColorChange }: any) {
       </select>
 
       {/* SUBIR IMAGEN */}
-      {producto.permiteImagenPersonalizada && (
+      {/* {producto.permiteImagenPersonalizada && (
         <>
           <label className="font-medium">Subir Diseño Personalizado:</label>
           <input
@@ -102,7 +102,7 @@ export default function ProductCustomizer({ producto, onColorChange }: any) {
             </div>
           )}
         </>
-      )}
+      )} */}
 
       {/* PRECIO */}
       <p className="text-xl font-bold mt-4">

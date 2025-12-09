@@ -1,11 +1,6 @@
 import { productos } from "@/app/data/productos";
-import { generarLinkWhatsApp } from "@/app/utils/whatsapp";
-import ContactForm from "./components/ContactForm";
-
 
 function Destacados() {
-  const whatsappLiving = generarLinkWhatsApp("Living Moderno");
-  const whatsappDormitorio = generarLinkWhatsApp("Dormitorio Premium");
 
   return (
     <section id="destacados" className="bg-gray-100 py-16">
@@ -29,14 +24,6 @@ function Destacados() {
                 </button>
               </a>
 
-                         {/* <a
-                    href={whatsappLiving}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-green-600 text-white w-full py-2 rounded-lg hover:bg-green-700 transition flex items-center justify-center"
-                  >
-                    Consultar por WhatsApp
-                  </a> */}
             </div>
           </div>
 
@@ -56,14 +43,6 @@ function Destacados() {
               </button>
             </a>
 
-              {/* <a
-                    href={whatsappDormitorio}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-green-600 text-white w-full py-2 rounded-lg hover:bg-green-700 transition flex items-center justify-center"
-                  >
-                    Consultar por WhatsApp
-                  </a> */}
             </div>
           </div>
 
@@ -101,42 +80,59 @@ export default function LandingMuebles() {
 
         {/* GRID DINÁMICO */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {productos.map((item) => {
-          return (
-            <a
-              key={item.id}
-              href={`/producto/${item.id}`}
-              className="block bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition cursor-pointer"
-            >
-              <img
-                src={item.imagen}
-                alt={item.nombre}
-                className="w-full h-56 object-cover"
-              />
+          {productos.map((item) => {
+            return (
+              <a
+                key={item.id}
+                href={`/producto/${item.id}`}
+                className="block bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition cursor-pointer min-h-[480px]"
+                >
+                  <img
+                    src={item.imagen}
+                    alt={item.nombre}
+                    className="w-full aspect-[4/3] object-cover rounded-t-2xl"
+                  />
 
-              <div className="p-4">
-                <h4 className="font-semibold text-lg mb-2">{item.nombre}</h4>
+                <div className="p-4">
+                <h4 className="font-semibold text-xl mb-2">{item.nombre}</h4>
 
-                <p className="text-sm text-gray-600 mb-3">
-                  Precio base: ${item.basePrice.toLocaleString("es-AR")}
-                </p>
+                <span className="inline-block bg-green-100 text-green-700 font-semibold px-3 py-1 rounded-lg mb-3">
+                  ${item.basePrice.toLocaleString("es-AR")}
+                </span>
+
+                {Array.isArray(item.descripcion) ? (
+                  <ul className="text-base text-gray-600 mb-3 list-disc list-inside">
+                    {item.descripcion.map((desc, index) => (
+                      <li key={index}>{desc}</li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="text-base text-gray-600 mb-3">{item.descripcion}</p>
+                )}
+
+
+                {/* <p className="text-base text-gray-600 mb-3">{item.incluye}</p> */}
 
                 <button className="bg-gray-900 text-white py-2 px-4 rounded-lg hover:bg-gray-700">
                   Saber más
                 </button>
               </div>
-            </a>
-          );
-        })}
-      </div>
+              </a>
+            );
+          })}
+        </div>
 
       </section>
 
 
       {/* Destacados */}
-      <Destacados />
+      {/* <Destacados /> */}
+
       {/* Contacto */}
-      <ContactForm />
+      {/* <ContactForm /> */}
+
+      {/* TrabajosRealizados */}
+      {/* <TrabajosRealizados /> */}
 
       {/* Footer */}
       <footer className="text-center py-6 text-sm text-gray-600">

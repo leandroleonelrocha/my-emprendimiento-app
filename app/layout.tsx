@@ -52,14 +52,17 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 
             {/* Logo + Título */}
             <div className="flex items-center gap-3">
+             
               <img src="/logo.jpeg" alt="MueblesLux Logo" className="h-10" />
               <h1 className="text-2xl font-bold">Muebles De Familia</h1>
+              
             </div>
 
             {/* Navegación */}
             <nav className="space-x-6">
               <a href="#productos" className="hover:underline">Productos</a>
               <a href="#destacados" className="hover:underline">Destacados</a>
+              <a href="#realizados" className="hover:underline">Trabajos realizados</a>
               <a href="#contacto" className="hover:underline">Contacto</a>
             </nav>
 

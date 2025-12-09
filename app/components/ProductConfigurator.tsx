@@ -29,7 +29,7 @@ export default function ProductConfigurator({ producto }: Props) {
     </h2>
 
     {/* MEDIDAS */}
-    <div className="mb-4">
+    {/* <div className="mb-4">
         <label className="block font-medium mb-1 text-gray-700">Medida</label>
         <select
         className="form-select rounded-2 p-2 border border-gray-300"
@@ -42,10 +42,10 @@ export default function ProductConfigurator({ producto }: Props) {
             </option>
         ))}
         </select>
-    </div>
+    </div> */}
 
     {/* MADERA */}
-    <div className="mb-4">
+    {/* <div className="mb-4">
         <label className="block font-medium mb-1 text-gray-700">Madera</label>
         <select
         className="form-select rounded-2 p-2 border border-gray-300"
@@ -58,7 +58,7 @@ export default function ProductConfigurator({ producto }: Props) {
             </option>
         ))}
         </select>
-    </div>
+    </div> */}
 
     {/* GANCHOS */}
     <div className="mb-4">
