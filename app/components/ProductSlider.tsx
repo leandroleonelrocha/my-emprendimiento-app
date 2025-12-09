@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 
-export default function ProductGallery({ imagenes }) {
+export default function ProductGallery({ imagenes }: { imagenes: string[] }) {
+
   const [selected, setSelected] = useState(imagenes[0]);
 
   return (
