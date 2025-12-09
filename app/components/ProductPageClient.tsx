@@ -2,10 +2,9 @@
 
 import { useState } from "react";
 import ProductCustomizer from "@/app/components/ProductCustomizer";
-import ProductSlider from "@/app/components/ProductSlider";
+import ProductGallery from "@/app/components/ProductSlider";
 
 export default function ProductPageClient({ producto }: any) {
-
   const [imagenActual, setImagenActual] = useState(producto.imagen);
 
   const url = `https://muebles-de-familia.vercel.app/producto/${producto.id}`;
@@ -13,22 +12,23 @@ export default function ProductPageClient({ producto }: any) {
     `Hola! Estoy interesado en el producto: ${producto.nombre}.
 Link del producto: ${url}`
   );
-
   const whatsapp = `https://wa.me/5491162174495?text=${message}`;
 
   return (
-    <section id="destacados" className="bg-gray-100 py-16">
-      <div className="max-w-4xl mx-auto p-6">
+    <section id="destacados" className="bg-light py-5">
+      <div className="container-fluid">
 
-        <h1 className="text-3xl font-bold mb-4">{producto.nombre}</h1>
+        <h1 className="fw-bold fs-2 mb-4">{producto.nombre}</h1>
 
-        <div className="flex flex-col md:flex-row gap-8">
+        <div className="row g-5">
 
-          <div className="md:w-1/2">
-            <ProductSlider imagenes={[imagenActual]} />
+          {/* Galería */}
+          <div className="col-md-8">
+            <ProductGallery imagenes={producto.imagenes} />
           </div>
 
-          <div className="md:w-1/2">
+          {/* Customizer + Botón */}
+          <div className="col-md-4">
             <ProductCustomizer
               producto={producto}
               onColorChange={(img: string) => setImagenActual(img)}
@@ -37,7 +37,7 @@ Link del producto: ${url}`
             <a
               href={whatsapp}
               target="_blank"
-              className="bg-green-600 text-white py-3 px-6 rounded-lg text-lg font-medium hover:bg-green-700 inline-block mt-6"
+              className="btn btn-success btn-lg mt-4 w-100"
             >
               Consultar por WhatsApp
             </a>

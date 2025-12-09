@@ -60,9 +60,8 @@ export const productos = [
       { id: 5, etiqueta: "5 ganchos", extra: 2500 },
     ],
     imagenes: [
-      "/img/llaveros/1.jpeg",
-      "/img/llaveros/2.jpeg",
-      "/img/llaveros/3.jpeg"
+      "/img/estantes-recibidor/1.jpeg",
+      "/img/estantes-recibidor/medidas.jpeg",
     ],
     descripcion:[ "Material MDF de 18 milimetros de espesor", "Fondo color negro 45cm x 20cm", '2 Estantes de 40cm x 20cm', "Altura entre estantes 20 cm" ],
     //incluye: "Incluye kit de colocacion ( va atornillado )",

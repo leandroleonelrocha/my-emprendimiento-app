@@ -1,45 +1,46 @@
 "use client";
 
-import { useState } from "react";
-import Image from "next/image";
+import { useState, useEffect } from "react";
 
 export default function ProductGallery({ imagenes }: { imagenes: string[] }) {
   const [selected, setSelected] = useState(imagenes[0]);
 
-  return (
-    <div className="flex gap-4">
+  useEffect(() => {
+    setSelected(imagenes[0]);
+  }, [imagenes]);
 
-      {/* MINIATURAS */}
-      <div className="flex-1 bg-gray-100 rounded-xl p-4 flex items-center justify-center">
+  return (
+    <div className="w-100">
+
+      {/* Imagen principal */}
+      <div className="ratio ratio-16x9 mb-4 border rounded">
+        <img
+          src={selected}
+          alt="featured"
+          className="w-100 h-100 object-fit-cover rounded"
+        />
+      </div>
+
+      {/* Miniaturas */}
+      <div className="row g-3">
         {imagenes.map((img, i) => (
-          <div
-            key={i}
-            onClick={() => setSelected(img)}
-            className={`border rounded-lg cursor-pointer overflow-hidden 
-              ${selected === img ? "ring-2 ring-blue-500" : "opacity-80 hover:opacity-100"}
-            `}
-          >
-            <Image
-              src={img}
-              width={600}
-          height={600}
-              alt={`thumb-${i}`}
-              className="object-cover"
-            />
+          <div className="col-4 col-sm-2" key={i}>
+            <div
+              className={`border rounded overflow-hidden cursor-pointer ${
+                selected === img ? "border-primary border-2" : ""
+              }`}
+              onClick={() => setSelected(img)}
+              style={{ height: "80px" }}
+            >
+              <img
+                src={img}
+                alt={`thumb-${i}`}
+                className="w-100 h-100 object-fit-cover"
+              />
+            </div>
           </div>
         ))}
       </div>
-
-      {/* IMAGEN PRINCIPAL */}
-      {/* <div className="flex-1 bg-gray-100 rounded-xl p-4 flex items-center justify-center">
-        <Image
-          src={selected}
-          width={600}
-          height={600}
-          alt="main"
-          className="object-contain max-h-[500px]"
-        />
-      </div> */}
 
     </div>
   );

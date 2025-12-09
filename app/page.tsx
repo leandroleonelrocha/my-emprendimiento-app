@@ -1,73 +1,28 @@
 import { productos } from "@/app/data/productos";
 
-function Destacados() {
-
-  return (
-    <section id="destacados" className="bg-gray-100 py-16">
-      <div className="container mx-auto px-4">
-        <h3 className="text-3xl font-semibold mb-10 text-center">Destacados</h3>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          
-          {/* CARD 1 */}
-          <div className="rounded-2xl overflow-hidden shadow-lg">
-            <img src="/img/14.jpeg" className="w-full" />
-            <div className="p-6 bg-white">
-              <h4 className="text-xl font-semibold mb-2">Living Moderno</h4>
-              <p className="text-gray-600 mb-4">
-                Combinamos comodidad y estilo para transformar tu espacio.
-              </p>
-
-              <a href={`/producto/1`}>
-                <button className="bg-gray-900 text-white py-2 px-4 rounded-lg hover:bg-gray-700">
-                  Saber más
-                </button>
-              </a>
-
-            </div>
-          </div>
-
-          {/* CARD 2 */}
-          <div className="rounded-2xl overflow-hidden shadow-lg">
-            <img src="/img/9.jpeg" className="w-full" />
-            <div className="p-6 bg-white">
-              <h4 className="text-xl font-semibold mb-2">Dormitorio Premium</h4>
-              <p className="text-gray-600 mb-4">
-                Diseñamos ambientes únicos adaptados a tu estilo.
-              </p>
-
-                                    
-              <a href={`/producto/2`}>
-              <button className="bg-gray-900 text-white py-2 px-4 rounded-lg hover:bg-gray-700">
-                Saber más
-              </button>
-            </a>
-
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-  );
-}
-
 export default function LandingMuebles() {
   return (
-    <div className="min-h-screen bg-gray-50 text-gray-800">
-      {/* Header */}
-     
+    <div style={{ minHeight: "100vh", backgroundColor: "#f9fafb", color: "#333" }}>
 
-      {/* Hero */}
-      <section className="w-full bg-[url('/img/tablero.jpg')] bg-cover bg-center py-32 text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold mb-4 drop-shadow-lg">
+      {/* HERO */}
+      <section
+        className="w-100 text-white text-center py-5"
+        style={{
+          backgroundImage: "url('/img/tablero.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          paddingTop: "130px",
+          paddingBottom: "130px",
+        }}
+      >
+        <div className="container">
+          <h2 className="fw-bold display-5 mb-4" style={{ textShadow: "0 2px 6px rgba(0,0,0,0.5)" }}>
             Trabajos con melamina en MDF.
           </h2>
 
           <a
             href="#productos"
-            className="bg-white text-gray-900 font-semibold py-3 px-6 rounded-xl shadow-lg hover:bg-gray-200 transition"
+            className="btn btn-light fw-semibold px-4 py-3 rounded-3 shadow"
           >
             Ver catálogo
           </a>
@@ -75,68 +30,61 @@ export default function LandingMuebles() {
       </section>
 
 
-      <section id="productos" className="container mx-auto px-4 py-16">
-        <h3 className="text-3xl font-semibold mb-10 text-center">Nuestros productos</h3>
+      {/* PRODUCTOS */}
+      <section id="productos" className="container-fluid py-5">
+        <h3 className="fw-semibold text-center mb-5 display-6">Nuestros productos</h3>
 
-        {/* GRID DINÁMICO */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {productos.map((item) => {
-            return (
+        <div className="row g-4">
+          {productos.map((item) => (
+            <div key={item.id} className="col-12 col-sm-6 col-lg-4">
               <a
-                key={item.id}
                 href={`/producto/${item.id}`}
-                className="block bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition cursor-pointer min-h-[480px]"
-                >
+                className="text-decoration-none text-dark"
+              >
+                <div className="card h-100 shadow-sm border-0 rounded-4 overflow-hidden">
+                  
+                  {/* Imagen */}
                   <img
                     src={item.imagen}
                     alt={item.nombre}
-                    className="w-full aspect-[4/3] object-cover rounded-t-2xl"
+                    className="card-img-top"
+                    style={{ height: "260px", objectFit: "cover" }}
                   />
 
-                <div className="p-4">
-                <h4 className="font-semibold text-xl mb-2">{item.nombre}</h4>
+                  <div className="card-body">
+                    <h4 className="fw-bold mb-2">{item.nombre}</h4>
 
-                <span className="inline-block bg-green-100 text-green-700 font-semibold px-3 py-1 rounded-lg mb-3">
-                  ${item.basePrice.toLocaleString("es-AR")}
-                </span>
+                    {/* Precio */}
+                    <span className="badge bg-success bg-opacity-25 text-success fw-semibold mb-3 p-2">
+                      ${item.basePrice.toLocaleString("es-AR")}
+                    </span>
 
-                {Array.isArray(item.descripcion) ? (
-                  <ul className="text-base text-gray-600 mb-3 list-disc list-inside">
-                    {item.descripcion.map((desc, index) => (
-                      <li key={index}>{desc}</li>
-                    ))}
-                  </ul>
-                ) : (
-                  <p className="text-base text-gray-600 mb-3">{item.descripcion}</p>
-                )}
+                    {/* Descripción */}
+                    {Array.isArray(item.descripcion) ? (
+                      <ul className="text-muted mb-3">
+                        {item.descripcion.map((desc, index) => (
+                          <li key={index}>{desc}</li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p className="text-muted mb-3">{item.descripcion}</p>
+                    )}
 
-
-                {/* <p className="text-base text-gray-600 mb-3">{item.incluye}</p> */}
-
-                <button className="bg-gray-900 text-white py-2 px-4 rounded-lg hover:bg-gray-700">
-                  Saber más
-                </button>
-              </div>
+                    <button className="btn btn-dark w-100 rounded-3">
+                      Saber más
+                    </button>
+                  </div>
+                </div>
               </a>
-            );
-          })}
+            </div>
+          ))}
         </div>
 
       </section>
 
-
-      {/* Destacados */}
-      {/* <Destacados /> */}
-
-      {/* Contacto */}
-      {/* <ContactForm /> */}
-
-      {/* TrabajosRealizados */}
-      {/* <TrabajosRealizados /> */}
-
-      {/* Footer */}
-      <footer className="text-center py-6 text-sm text-gray-600">
-        © {new Date().getFullYear()} MueblesLux - Todos los derechos reservados
+      {/* FOOTER */}
+      <footer className="text-center py-4 text-muted small">
+        © {new Date().getFullYear()} Muebles De Familia – Todos los derechos reservados
       </footer>
     </div>
   );

@@ -17,55 +17,52 @@ type ColorType = {
 };
 
 export default function ProductCustomizer({ producto, onColorChange }: any) {
-
   const [color, setColor] = useState<ColorType | null>(null);
   const [tamaño, setTamaño] = useState<TamañoType | null>(null);
   const [imagenPersonal, setImagenPersonal] = useState<string | null>(null);
 
   const precioFinal =
-    producto.basePrice +
-    (tamaño?.extra || 0);
+    producto.basePrice + (tamaño?.extra || 0);
 
   const handleUpload = (e: any) => {
     const file = e.target.files?.[0];
     if (!file) return;
-
     const url = URL.createObjectURL(file);
     setImagenPersonal(url);
   };
 
- 
-    const handleColorSelect = (c: any) => {
-      setColor(c);
-      if (c.imagen) onColorChange(c.imagen);
-    };
+  const handleColorSelect = (c: any) => {
+    setColor(c);
+    if (c.imagen) onColorChange(c.imagen);
+  };
 
   return (
-    <div className="mt-8">
+    <div className="mt-4">
 
       {/* COLORES */}
-      <p className="font-medium mb-1">Color del Lateral:</p>
-      <div className="flex gap-3 mb-4">
+      <p className="fw-semibold mb-1">Color del Lateral:</p>
+
+      <div className="d-flex gap-3 mb-4">
         {producto.colores?.map((c: any) => (
           <div
             key={c.id}
             onClick={() => handleColorSelect(c)}
             style={{
-              width: 30,
-              height: 30,
+              width: "34px",
+              height: "34px",
               borderRadius: "50%",
-              background: c.hex,
+              backgroundColor: c.hex,
               border: color?.id === c.id ? "3px solid black" : "1px solid #ccc",
               cursor: "pointer",
             }}
-          />
+          ></div>
         ))}
       </div>
 
       {/* TAMAÑO */}
-      <label className="font-medium">Tamaño:</label>
+      <label className="fw-semibold mb-1">Tamaño:</label>
       <select
-        className="border p-2 rounded w-full mb-4"
+        className="form-select mb-4"
         onChange={(e) =>
           setTamaño(producto.tamaños.find((t: any) => t.id === e.target.value))
         }
@@ -78,34 +75,35 @@ export default function ProductCustomizer({ producto, onColorChange }: any) {
         ))}
       </select>
 
-      {/* SUBIR IMAGEN */}
-      {/* {producto.permiteImagenPersonalizada && (
+      {/* SUBIR DISEÑO PERSONALIZADO */}
+      {producto.permiteImagenPersonalizada && (
         <>
-          <label className="font-medium">Subir Diseño Personalizado:</label>
+          <label className="fw-semibold mb-2">Subir Diseño Personalizado:</label>
+
           <input
             type="file"
             accept="image/*"
-            className="block border p-2 rounded mb-4"
+            className="form-control mb-3"
             onChange={handleUpload}
           />
 
           {imagenPersonal && (
             <div className="mb-4">
-              <p className="font-medium">Vista previa:</p>
+              <p className="fw-semibold">Vista previa:</p>
               <Image
                 src={imagenPersonal}
                 width={300}
                 height={200}
                 alt="preview"
-                className="rounded shadow"
+                className="rounded shadow-sm"
               />
             </div>
           )}
         </>
-      )} */}
+      )}
 
       {/* PRECIO */}
-      <p className="text-xl font-bold mt-4">
+      <p className="fs-4 fw-bold mt-4">
         Precio final: ${precioFinal.toLocaleString("es-AR")}
       </p>
     </div>
