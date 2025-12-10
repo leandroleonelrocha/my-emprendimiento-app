@@ -57,7 +57,7 @@ Link del producto: ${url}`
           </a> */}
 
           <a
-  href={producto.whatsapp}
+  href={whatsapp}
   target="_blank"
   className="btn btn-lg w-100 mt-4 d-flex align-items-center justify-content-center gap-2 text-white"
   style={{
