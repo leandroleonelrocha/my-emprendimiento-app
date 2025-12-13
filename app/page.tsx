@@ -3,91 +3,105 @@ import { productos } from "@/app/data/productos";
 export default function LandingMuebles() {
   return (
     <div style={{ minHeight: "100vh", backgroundColor: "#f9fafb", color: "#333" }}>
-
       {/* HERO */}
       <section
-        className="w-100 text-white text-center py-5"
+        className="w-100 text-white"
         style={{
-          backgroundImage: "url('/img/tablero.jpg')",
+          backgroundImage:
+            "linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.35)), url('/img/tablero.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
-          paddingTop: "130px",
-          paddingBottom: "130px",
+          paddingTop: "120px",
+          paddingBottom: "120px",
         }}
       >
         <div className="container">
-          <h2 className="fw-bold display-5 mb-4" style={{ textShadow: "0 2px 6px rgba(0,0,0,0.5)" }}>
-            Trabajos con melamina en MDF.
-          </h2>
+          <div className="row align-items-center">
+            <div className="col-lg-8">
+              <h1 className="fw-bold display-5 mb-3" style={{ textShadow: "0 2px 10px rgba(0,0,0,0.45)" }}>
+                Muebles en melamina 18mm a medida
+              </h1>
+              <p className="lead mb-4" style={{ maxWidth: 720, textShadow: "0 2px 10px rgba(0,0,0,0.35)" }}>
+                Diseños modernos, terminaciones prolijas y asesoramiento por WhatsApp.
+              </p>
 
-          <a
-            href="#productos"
-            className="btn btn-light fw-semibold px-4 py-3 rounded-3 shadow"
-          >
-            Ver catálogo
-          </a>
+              <div className="d-flex flex-wrap gap-2">
+                <a href="#productos" className="btn btn-light fw-semibold px-4 py-3 rounded-3 shadow">
+                  Ver productos
+                </a>
+                <a
+                  href="https://wa.me/5491162174495"
+                  target="_blank"
+                  className="btn btn-outline-light fw-semibold px-4 py-3 rounded-3"
+                  rel="noreferrer"
+                >
+                  Pedir presupuesto
+                </a>
+              </div>
+
+              <div className="d-flex flex-wrap gap-2 mt-4 small text-white-50">
+                <span className="badge rounded-pill bg-light text-dark">Melamina 18mm</span>
+                <span className="badge rounded-pill bg-light text-dark">A medida</span>
+                <span className="badge rounded-pill bg-light text-dark">Entrega coordinada</span>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-
       {/* PRODUCTOS */}
       <section id="productos" className="container py-5">
-        <h3 className="fw-semibold text-center mb-5 display-6">Nuestros productos</h3>
+        <div className="d-flex align-items-end justify-content-between flex-wrap gap-2 mb-4">
+          <div>
+            <h3 className="fw-bold mb-1">Nuestros productos</h3>
+            <div className="text-muted">Elegí uno y consultá directo por WhatsApp.</div>
+          </div>
+        </div>
 
         <div className="row g-4">
           {productos.map((item) => (
             <div key={item.id} className="col-12 col-sm-6 col-lg-4">
-              <a
-                href={`/producto/${item.id}`}
-                className="text-decoration-none text-dark"
-              >
+              <a href={`/producto/${item.id}`} className="text-decoration-none text-dark">
                 <div className="card h-100 shadow-sm border-0 rounded-4 overflow-hidden">
-                  
-                  {/* Imagen */}
-                  <img
-                    src={item.imagen}
-                    alt={item.nombre}
-                    className="card-img-top"
-                    style={{ height: "260px", objectFit: "cover" }}
-                  />
+                  {/* Imagen con proporción fija */}
+                  <div style={{ height: 260, background: "#fff" }}>
+                    <img
+                      src={item.imagen}
+                      alt={item.nombre}
+                      className="w-100 h-100"
+                      style={{ objectFit: "cover" }}
+                      loading="lazy"
+                    />
+                  </div>
 
-                  <div className="card-body">
+                  <div className="card-body d-flex flex-column">
+                    <div className="d-flex justify-content-between align-items-center">
+                      <div className="fw-bold fs-5">
+                        ${item.basePrice.toLocaleString("es-AR")}
+                      </div>
+                      <span className="badge text-bg-light border">Melamina 18mm</span>
+                    </div>
 
-                    <h5 className="fw-normal mt-3">
-                      ${item.basePrice.toLocaleString("es-AR")}
-                    </h5>
+                    <h4 className="fw-semibold mt-2 mb-2" style={{ lineHeight: 1.2 }}>
+                      {item.nombre}
+                    </h4>
 
-                    <h4 className="fw-bold mt-3">{item.nombre}</h4>
+                    <div className="text-muted small mb-3" style={{ minHeight: 36 }}>
+                      Consultá medidas, colores y entrega.
+                    </div>
 
-                    {/* Precio */}
-                    {/* <span className="badge bg-success bg-opacity-25 text-success fw-semibold mb-3 p-2">
-                      ${item.basePrice.toLocaleString("es-AR")}
-                    </span> */}
-
-                    {/* Descripción */}
-                    {/* {Array.isArray(item.descripcion) ? (
-                      <ul className="text-muted mb-3">
-                        {item.descripcion.map((desc, index) => (
-                          <li key={index}>{desc}</li>
-                        ))}
-                      </ul>
-                    ) : (
-                      <p className="text-muted mb-3">{item.descripcion}</p>
-                    )} */}
-
-                    <button className="btn btn-dark w-100 rounded-3 mt-3">
-                      Saber más
-                    </button>
+                    <div className="mt-auto d-grid gap-2">
+                      <span className="btn btn-dark rounded-3">Ver detalle</span>
+                      <span className="btn btn-outline-dark rounded-3">Consultar</span>
+                    </div>
                   </div>
                 </div>
               </a>
             </div>
           ))}
         </div>
-
       </section>
 
-      {/* FOOTER */}
       <footer className="text-center py-4 text-muted small">
         © {new Date().getFullYear()} Muebles De Familia – Todos los derechos reservados
       </footer>
