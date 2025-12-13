@@ -164,10 +164,47 @@ export const productos = [
     ],
     imagenes: [
      // "/img/mesa-luz/1.jpeg",
-      "/img/mesa-luz/2.jpeg",
       "/img/mesa-luz/3.png",
+      "/img/mesa-luz/2.jpeg",
+     
     ],
     descripcion:["Melamina de 18 milimetros de espesor", "60 de alto, ancho 50 y profundidad de 40"],
+    //incluye: "Incluye kit de colocacion ( va atornillado )",
+    venta: true,
+    permiteImagenPersonalizada: true
+  },
+  {
+    id: 6,
+    nombre: "Vestidor para niños",
+    imagen: "/img/vestidor/1.png",
+    basePrice: 100000,
+    colores: [
+      { id: "verde", etiqueta: "Verde", hex: "#7ED957" },
+      { id: "rojo", etiqueta: "Rojo", hex: "#FF3131" },
+      { id: "amarillo", etiqueta: "Amarillo", hex: "#F7D84A" },
+      { id: "rosa", etiqueta: "Rosa", hex: "#FF7EB9" },
+    ],
+    medidas: [
+      { id: "30cm", etiqueta: "27", extra: 0 },
+      { id: "50cm", etiqueta: "15", extra: 3000 },
+    ],
+    maderas: [
+      { id: "pino", etiqueta: "Pino Natural", extra: 0 },
+      { id: "roble", etiqueta: "Roble", extra: 4000 },
+      { id: "nogal", etiqueta: "Nogal Oscuro", extra: 6000 },
+    ],
+    ganchos: [
+      { id: 0, etiqueta: "0 ganchos", extra: 0 },
+      { id: 3, etiqueta: "3 ganchos", extra: 1500 },
+      { id: 5, etiqueta: "5 ganchos", extra: 2500 },
+    ],
+    imagenes: [
+     // "/img/mesa-luz/1.jpeg",
+      "/img/vestidor/1.png",
+      "/img/vestidor/2.jpeg",
+     
+    ],
+    descripcion:["Vestidor para niños echo en melamina de 18 milimetros de espesor", "90 de alto x 90 de ancho x 30 de profundidas", "Estantes 29 x 18 entre estantes"],
     //incluye: "Incluye kit de colocacion ( va atornillado )",
     venta: true,
     permiteImagenPersonalizada: true
