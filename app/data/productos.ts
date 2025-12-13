@@ -2,7 +2,7 @@ export const productos = [
   {
     id: 1,
     nombre: "Perchero (27 x 15 cm)",
-    imagen: "/img/llaveros/1.jpeg",
+    imagen: "/img/llaveros/3.jpeg",
     basePrice: 14000,
     colores: [
       { id: "verde", etiqueta: "Verde", hex: "#7ED957" },
@@ -25,9 +25,14 @@ export const productos = [
       { id: 5, etiqueta: "5 ganchos", extra: 2500 },
     ],
     imagenes: [
+      "/img/llaveros/3.jpeg",
       "/img/llaveros/1.jpeg",
       "/img/llaveros/2.jpeg",
-      "/img/llaveros/3.jpeg"
+      "/img/llaveros/1.png",
+      "/img/llaveros/5.png",
+      "/img/llaveros/6.png",
+      "/img/llaveros/boca.png",
+      "/img/llaveros/river.png",
     ],
     descripcion: ["Realizado en MDF de 18 milimetros con tapacanto color azul", "Incluye kit de colocacion ( va atornillado )"],
     incluye: "Incluye kit de colocacion ( va atornillado )",
