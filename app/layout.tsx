@@ -65,7 +65,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             </div>
 
             {/* Navegación */}
-            <nav className="d-flex gap-4">
+            <nav className="navbar border-bottom border-body" data-bs-theme="dark">
+
               <a href="#productos" className="text-decoration-none">Productos</a>
               {/* <a href="#destacados" className="text-decoration-none">Destacados</a>
               <a href="#realizados" className="text-decoration-none">Trabajos realizados</a>

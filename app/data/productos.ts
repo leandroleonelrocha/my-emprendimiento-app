@@ -182,7 +182,7 @@ export const productos = [
     id: 6,
     nombre: "Vestidor para niños",
     imagen: "/img/vestidor/1.png",
-    basePrice: 100000,
+    basePrice: 120000,
     colores: [
       { id: "verde", etiqueta: "Verde", hex: "#7ED957" },
       { id: "rojo", etiqueta: "Rojo", hex: "#FF3131" },
